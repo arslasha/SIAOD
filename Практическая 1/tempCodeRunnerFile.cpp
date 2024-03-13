@@ -1,0 +1,1 @@
+arr[i]= a+(b-a)*1.0*rand()/RAND_MAX;
