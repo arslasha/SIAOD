@@ -61,11 +61,11 @@ void del_elem(typeX *a, int pos) {
     --a->n;
 }
 
-void paste_elem(typeX *a, int pos, int el) {
+void paste_elem(typeX *a, int pos, int elem) {
     a->n++;
     for(int i = a->n - 1; i > pos; --i) {
         a->x[i] = a->x[i - 1];
     }
-    a->x[pos] = el;
+    a->x[pos] = elem;
 }
 

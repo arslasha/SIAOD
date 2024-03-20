@@ -13,4 +13,4 @@ void insertElement(typeX *a, int elem);
 void input_arr(typeX *a);
 void call_arr(typeX *a);
 void del_elem(typeX *a, int pos);
-void paste_elem(typeX *a, int pos, int el);
+void paste_elem(typeX *a, int pos, int elem);
