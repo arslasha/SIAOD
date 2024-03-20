@@ -11,7 +11,6 @@ int main() {
     std::cout << "Введите размер массива: ";
     std::cin >> a.n;
     
-    std::cout << "Введите элементы массива:" << "\n";
     int elem;
     std::cin >> elem;
     input_arr(&a);
