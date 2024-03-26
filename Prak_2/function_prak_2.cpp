@@ -29,12 +29,12 @@ void removeValueWithFive(typeX* a, int elem) {
 }
 //Функция для вставки нового элемента массива перед элементом меньшим его по значению
 void insertElement(typeX* a, int elem) {
-    int count = 0;
+    // int count = 0;
     if (isDecreasing(a)) {
         for (int i = 0; i < a->n; ++i) {
-            count++;
+            // count++;
             if (elem > a->x[i]) {
-                paste_elem(a, count, elem);
+                paste_elem(a, i+1, elem);
                 return;
             }
         }
@@ -72,4 +72,16 @@ void paste_elem(typeX* a, int pos, int elem) {
         a->x[i] = a->x[i - 1];
     }
     a->x[pos - 1] = elem;
+}
+
+
+int findNumberWithFive(typeX* a, int elem) {
+    for (int i = 0; i < a->n; ++i) {      
+        while (a->x[i] > 0) {
+            if (a->x[i] % 10 == 5) {
+                return i;
+            }
+            a->x[i] /= 10;
+        }
+    }
 }

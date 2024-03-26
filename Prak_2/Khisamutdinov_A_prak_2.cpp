@@ -25,24 +25,24 @@ void removeValueWithFive(typeX* a, int elem) {
         }
     }
     else {
-        std::cout << "Массив упорядочен по убыванию, попробуйте ещё раз!";
+        std::cout << "\nМассив упорядочен по убыванию, попробуйте ещё раз!";
         return;
     }
 }
 //Функция для вставки нового элемента массива перед элементом меньшим его по значению
 void insertElement(typeX* a, int elem) {
-    int count = 0;
+    // int count = 0;
     if (isDecreasing(a)) {
         for (int i = 0; i < a->n; ++i) {
-            count++;
+            // count++;
             if (elem > a->x[i]) {
-                paste_elem(a, count, elem);
+                paste_elem(a, i + 1, elem);
                 return;
             }
         }
     }
     else {
-        std::cout << "Массив не упорядочен по убыванию, попробуйте снова!";
+        std::cout << "\nМассив не упорядочен по убыванию, попробуйте снова!";
         return;
     }
 }
@@ -116,7 +116,7 @@ int main() {
             break;
 
         default:
-            std::cout << "Вы ввели неправильный номер операции, попробуйте еще раз!";
+            std::cout << "\nВы ввели неправильный номер операции, попробуйте еще раз!";
             break;
         }
     } while (x != 0);
