@@ -2,49 +2,6 @@
 #include <string>
 #include "Header.h"
 
-
-//Функция для проверки правильности порядка элементов в массиве (по убыванию или нет)
-bool isDecreasing(typeX* a) {
-    for (int i = 0; i < a->n - 1; ++i) {
-        if (a->x[i] < a->x[i + 1]) {
-            return false;
-        }
-    }
-    return true;
-}
-
-//Функция для нахождения и удаление из массива чисел, содержащих цифру 5
-void removeValueWithFive(typeX* a, int elem) {
-    if (!isDecreasing(a)) {
-        for (int i = 0; i < a->n; ++i) {
-            if (std::to_string(a->x[i]).find('5') != std::string::npos) {
-                del_elem(a, i);
-            }
-        }
-    }
-    else {
-        std::cout << "Массив упорядочен по убыванию, попробуйте ещё раз!";
-        return;
-    }
-}
-//Функция для вставки нового элемента массива перед элементом меньшим его по значению
-void insertElement(typeX* a, int elem) {
-    // int count = 0;
-    if (isDecreasing(a)) {
-        for (int i = 0; i < a->n; ++i) {
-            // count++;
-            if (elem > a->x[i]) {
-                paste_elem(a, i+1, elem);
-                return;
-            }
-        }
-    }
-    else {
-        std::cout << "Массив не упорядочен по убыванию, попробуйте снова!";
-        return;
-    }
-}
-
 void input_arr(typeX* a) {
     std::cout << "\nВведите элементы массива:\n";
     for (int i = 0; i < a->n; ++i) {
@@ -83,5 +40,48 @@ int findNumberWithFive(typeX* a, int elem) {
             }
             a->x[i] /= 10;
         }
+    }
+}
+
+//Функция для проверки правильности порядка элементов в массиве (по убыванию или нет)
+bool isDecreasing(typeX* a) {
+    for (int i = 0; i < a->n - 1; ++i) {
+        if (a->x[i] < a->x[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//Функция для нахождения и удаление из массива чисел, содержащих цифру 5
+void removeValueWithFive(typeX* a, int elem) {
+    if (!isDecreasing(a)) {
+        for (int i = 0; i < a->n; ++i) {
+            if (std::to_string(a->x[i]).find('5') != std::string::npos) {
+                del_elem(a, i);
+            }
+        }
+    }
+    else {
+        std::cout << "Массив упорядочен по убыванию, попробуйте ещё раз!";
+        return;
+    }
+}
+
+//Функция для вставки нового элемента массива перед элементом меньшим его по значению
+void insertElement(typeX* a, int elem) {
+    // int count = 0;
+    if (isDecreasing(a)) {
+        for (int i = 0; i < a->n; ++i) {
+            // count++;
+            if (elem > a->x[i]) {
+                paste_elem(a, i+1, elem);
+                return;
+            }
+        }
+    }
+    else {
+        std::cout << "Массив не упорядочен по убыванию, попробуйте снова!";
+        return;
     }
 }
