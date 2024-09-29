@@ -1,10 +1,11 @@
 #include <iostream>
-#include "Header.h"
+#include "header_prak_2.h"
 #include <limits>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
 
+//Функция для заполнения массива
 void input_arr(typeX* a) {
     std::cout << "\nВведите элементы массива:\n";
     for (int i = 0; i < a->n; ++i) {
@@ -13,12 +14,14 @@ void input_arr(typeX* a) {
     }
 }
 
+//Функция для вызова массива
 void call_arr(typeX* a) {
     for (int i = 0; i < a->n; ++i) {
         std::cout << a->x[i] << " ";
     }
 }
 
+//Функция для удаление элемента 
 void del_elem(typeX* a, int pos) {
     for (int i = pos; i < a->n - 1; ++i) {
         a->x[i] = a->x[i + 1];
@@ -26,24 +29,13 @@ void del_elem(typeX* a, int pos) {
     --a->n;
 }
 
+//Функция для втавки элемента
 void paste_elem(typeX* a, int pos, int elem) {
     a->n++;
     for (int i = a->n - 1; i > pos; --i) {
         a->x[i] = a->x[i - 1];
     }
-    a->x[pos - 1] = elem;
-}
-
-
-int findNumberWithFive(typeX* a) {
-    for (int i = 0; i < a->n; ++i) {      
-        while (a->x[i] > 0) {
-            if (a->x[i] % 10 == 5) {
-                return i;
-            }
-            a->x[i] /= 10;
-        }
-    }
+    a->x[pos] = elem;
 }
 
 //Функция для проверки правильности порядка элементов в массиве (по убыванию или нет)
@@ -57,25 +49,26 @@ bool isDecreasing(typeX* a) {
 }
 
 //Функция для нахождения и удаление из массива чисел, содержащих цифру 5
-void removeValueWithFive(typeX* a, int elem) {
+void removeValueWithFive(typeX* a) {
     if (!isDecreasing(a)) {
-        int ind = findNumberWithFive(a);
-        del_elem(a, ind);    
+        for (int i = 0; i < a->n; ++i) {
+            if (std::to_string(a->x[i]).find('5') != std::string::npos) {
+                del_elem(a, i);
+            }
+        }
     }
     else {
-        std::cout << "Массив упорядочен по убыванию, попробуйте ещё раз!";
+        std::cout << "\nМассив упорядочен по убыванию, попробуйте ещё раз!";
         return;
     }
 }
 
 //Функция для вставки нового элемента массива перед элементом меньшим его по значению
 void insertElement(typeX* a, int elem) {
-    // int count = 0;
     if (isDecreasing(a)) {
         for (int i = 0; i < a->n; ++i) {
-            // count++;
             if (elem > a->x[i]) {
-                paste_elem(a, i+1, elem);
+                paste_elem(a, i, elem);
                 return;
             }
         }
@@ -86,14 +79,12 @@ void insertElement(typeX* a, int elem) {
     }
 }
 
+
 int main() {
-    std::cout << ("\e[1;1H\e[2J");
     setlocale(LC_ALL, "rus");
     typeX a;
-
     std::cout << "Введите размер массива: ";
     std::cin >> a.n;
-
     input_arr(&a);
     std::cout << "elem: ";
     int elem;
@@ -104,7 +95,8 @@ int main() {
         std::cout << "\n\nСписок операций: \n";
         std::cout << "1)Вывести массив. \n";
         std::cout << "2)Удалить значения, которые содержат цифру 5 в неупорядоченном по убыванию массиве. \n";
-        std::cout << "3)Вставить новый элемент массива перед элементом меньшим его по значению в упорядоченном массиве. \n" << "0)Выйти из программы. \n";
+        std::cout << "3)Вставить новый элемент массива перед элементом меньшим его по значению в упорядоченном массиве. \n"; 
+        std::cout << "0)Выйти из программы. \n";
         std::cout << "Введите номер оперции: ";
         std::cin >> x;
 
