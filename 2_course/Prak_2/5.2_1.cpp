@@ -70,6 +70,7 @@ void convert_to_binary_file(const string& text_filename, const string& binary_fi
  
 int main() { 
     setlocale(0, ""); 
+    cout << ("\e[1;1H\e[2J");  // Очистка экрана с помощью escape-последовательности
     const string text_filename = "students.txt"; 
     const string binary_filename = "students.dat"; 
     const int num_records = 100; 

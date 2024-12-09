@@ -110,10 +110,10 @@ void perform_search_and_measure_time(const string& binary_filename, int key) {
 
     // Вывод результатов
     if (result.student_id != 0) {
-        cout << "Запись найдена: " << result.student_id << ", Группа: " << result.group_number
-             << ", ФИО: " << result.full_name << endl;
+        cout << "Студент с номером зачетки " << result.student_id << "найден:" << " Группа: " << result.group_number
+             << " | ФИО: " << result.full_name << endl;
     } else {
-        cout << "Запись с номером зачётки " << key << " не найдена." << endl;
+        cout << "Студент с номером зачётки " << key << " не найден." << endl;
     }
 
     // Вывод времени поиска
@@ -121,8 +121,9 @@ void perform_search_and_measure_time(const string& binary_filename, int key) {
 }
 
 int main() {
-    cout << ("\e[1;1H\e[2J");  // Очистка экрана с помощью escape-последовательности
     setlocale(0, "");  // Для корректного вывода русских символов
+    cout << ("\e[1;1H\e[2J");  // Очистка экрана с помощью escape-последовательности
+   
 
     const string text_filename = "students.txt";
     const string binary_filename = "students.bin";
