@@ -1,0 +1,1 @@
+ring str = "babaddadgfg"
